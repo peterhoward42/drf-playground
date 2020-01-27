@@ -28,11 +28,19 @@ application = get_wsgi_application()
 # is not yet initialised.
 from tutorial.quickstart.models import Invoice
 
-for i in range(3):
+# Replace the Invoice table with deterministic contents
+Invoice.objects.all().delete()
+
+incrementing_amount = 0.01
+deterministic_id = 1
+for i in range(6):
     invoice = Invoice(
+        id=deterministic_id,
         date=timezone.now(),
-        amount=99.9
+        amount=incrementing_amount
     )
     invoice.save()
+    deterministic_id += 1
+    incrementing_amount += 0.01
 
 print("Finished")
