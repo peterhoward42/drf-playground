@@ -1,5 +1,9 @@
 from django.contrib.auth.models import User, Group
+
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+
+
 from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, InvoiceSerializer
 from tutorial.quickstart.models import Invoice
 
@@ -27,3 +31,5 @@ class InvoiceViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Invoice.objects.all().order_by('big')
     serializer_class = InvoiceSerializer
 
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['big']
