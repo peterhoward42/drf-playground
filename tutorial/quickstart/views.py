@@ -24,5 +24,6 @@ class InvoiceViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows invoices to be viewed.
     """
-    queryset = Invoice.objects.all()
+    queryset = Invoice.objects.all().order_by('big')
     serializer_class = InvoiceSerializer
+

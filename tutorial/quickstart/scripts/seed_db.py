@@ -32,15 +32,16 @@ from tutorial.quickstart.models import Invoice
 Invoice.objects.all().delete()
 
 incrementing_amount = 0.01
-deterministic_id = 1
-for i in range(6):
+counter = 1
+for i in range(1000):
     invoice = Invoice(
-        id=deterministic_id,
+        id=counter,
         date=timezone.now(),
-        amount=incrementing_amount
+        amount=incrementing_amount,
+        big=1000000 - counter
     )
     invoice.save()
-    deterministic_id += 1
+    counter += 1
     incrementing_amount += 0.01
 
 print("Finished")
