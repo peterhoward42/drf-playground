@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
+from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, InvoiceSerializer
 from tutorial.quickstart.models import Invoice
 
 
@@ -25,4 +25,4 @@ class InvoiceViewSet(viewsets.ReadOnlyModelViewSet):
     API endpoint that allows invoices to be viewed.
     """
     queryset = Invoice.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = InvoiceSerializer

@@ -18,3 +18,4 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class InvoiceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Invoice
+        fields = '__all__'
